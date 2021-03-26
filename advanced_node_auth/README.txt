@@ -2,4 +2,4 @@
 ../advanced_node_auth/ - npm run server
 ../advanced_node_auth/client - npm start
 
-2.
+WARNING! All "node_modules" (server-side, client-side) will be deleted from Repository soon.

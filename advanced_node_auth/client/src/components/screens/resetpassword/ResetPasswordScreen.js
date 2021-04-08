@@ -46,48 +46,30 @@ const ResetPasswordScreen = ({ match }) => {
   };
 
   return (
-    <div className="resetpassword-screen">
-      <form
-        onSubmit={resetPasswordHandler}
-        className="resetpassword-screen__form"
-      >
-        <h3 className="resetpassword-screen__title">Forgot Password</h3>
-        {error && <span className="error-message">{error} </span>}
+    <div className="formContainer">
+    <div className="frame">
+    <div className="blockLogin">
+        <h1>Reset Password</h1>
+        {error && <span className="error-message">{error}</span>}
         {success && (
           <span className="success-message">
             {success} <Link to="/login">Login</Link>
           </span>
         )}
         {!success && <>
-        <div className="form-group">
-          <label htmlFor="password">New Password:</label>
-          <input
-            type="password"
-            required
-            id="password"
-            placeholder="Enter new password"
-            autoComplete="true"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <div className="Email">
+            
+            <input type="password" required id="password" placeholder="New Password" autoComplete="true" value={password}onChange={(e) => setPassword(e.target.value)}/>
         </div>
-        <div className="form-group">
-          <label htmlFor="confirmpassword">Confirm New Password:</label>
-          <input
-            type="password"
-            required
-            id="confirmpassword"
-            placeholder="Confirm new password"
-            autoComplete="true"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
+
+        <div className="Password">
+            <input type="password" require id="confirmpassword" placeholder="Confirm new password" autoComplete="true" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Reset Password
-        </button>
+
+        <button type="submit" className="loginButton" onClick={resetPasswordHandler}>Reset Now</button>
         </>}
-      </form>
+    </div>
+    </div>
     </div>
   );
 };

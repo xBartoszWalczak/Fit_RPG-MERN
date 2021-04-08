@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './LoginScreen.css';
 
 const LoginScreen = ({ history }) => {
 
@@ -17,7 +18,6 @@ const LoginScreen = ({ history }) => {
     }, [history]);
 
     const loginHandler = async (e) => {
-        e.preventDefault();
         
         const config = {
             header: {
@@ -42,39 +42,28 @@ const LoginScreen = ({ history }) => {
     }
 
     return(
-        <div className="login-screen">
-            <form onSubmit={loginHandler} className="login-screen_form">
-                <h3 className="login-screen_title">Login</h3>
+        <div className="formContainer">
+            <div className="frame">
+            <div className="blockLogin">
+                <h1>Login</h1>
                 {error && <span className="error-message">{error}</span>}
 
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input type="email"
-                    required
-                    id="email"
-                    placeholder="Enter email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}/>
-                </div>
-                
-                <span className="login-screen_subtext">Forgot a password? <Link to="/forgotpassword">Click here!</Link></span>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password"
-                    required
-                    id="password"
-                    placeholder="Enter password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}/>
+                <div className="Email">
+                    
+                    <input type="email" required id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
 
+                <div className="Password">
+                    <input type="password" require id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                </div>
 
-                <button type="submit" className="btn btn-primary">Login</button>
-                <span className="login-screen_subtext">Do not have an account? <Link to="/register">Register</Link></span>
-                
-            </form>
-        </div>
-    );
+                <button type="submit" className="loginButton" onClick={loginHandler}>Sign In</button>
+                <span className="spander">Do not have an account? <Link to="/register">Register<br></br><br></br></Link></span>
+                <span className="spander">Forgot password? <Link to="/forgotpassword">Remind now !</Link></span>
+            </div>
+            </div>
+            </div>
+    )
 }
 
 export default LoginScreen;

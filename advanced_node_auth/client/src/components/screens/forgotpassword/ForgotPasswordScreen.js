@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 
 const ForgotPasswordScreen = () => {
@@ -34,33 +35,24 @@ const ForgotPasswordScreen = () => {
   };
 
   return (
-    <div className="forgotpassword-screen">
-      <form
-        onSubmit={forgotPasswordHandler}
-        className="forgotpassword-screen__form"
-      >
-        <h3 className="forgotpassword-screen__title">Forgot Password</h3>
+    <div className="formContainer">
+    <div className="frame">
+    <div className="blockLogin">
+        <h1>Remind Password</h1>
         {error && <span className="error-message">{error}</span>}
         {success && <span className="success-message">{success}</span>}
-        <div className="form-group">
-          <p className="forgotpassword-screen__subtext">
-            Please enter the email address you register your account with. We
-            will send you reset password confirmation to this email
-          </p>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            required
-            id="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <h4>Please enter the email address you register your account with. We
+            will send you reset password confirmation to this email</h4>
+        <div className="Email">
+            
+            <input type="email" required id="email" placeholder="Email" value={email}/>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Send Email
-        </button>
-      </form>
+
+        <button type="submit" className="loginButton" onClick={forgotPasswordHandler}>Remind Now</button>
+        <span className="spander">Do not have an account? <Link to="/register">Register<br></br><br></br></Link></span>
+        <span className="spander">Already have an account? <Link to="/login">Sing in now !</Link></span>
+    </div>
+    </div>
     </div>
   );
 };

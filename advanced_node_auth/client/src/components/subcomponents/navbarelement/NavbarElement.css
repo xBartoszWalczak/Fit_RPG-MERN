@@ -1,0 +1,42 @@
+.navButton {
+    width: fit-content;
+    min-width: 5rem;
+    height: 3rem;
+    text-align: center;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    font-size: 1.3rem;
+    border: 0px;
+    outline: none;
+    cursor:pointer;
+    margin-top: 6px;
+    margin-left: 10px;
+}
+
+.icon {
+    max-height: 2rem;
+    max-width: 3rem;
+    position: relative;
+    vertical-align: middle;
+}
+
+.name {
+    position: relative;
+    vertical-align: middle;
+}
+
+.logbutton {
+    width: fit-content;
+    min-width: 5rem;
+    height: 3rem;
+    text-align: center;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    font-size: 1.3rem;
+    border: 0px;
+    outline: none;
+    cursor:pointer;
+    margin-top: 6px;
+    margin-left: 10px;
+    float: right;
+}

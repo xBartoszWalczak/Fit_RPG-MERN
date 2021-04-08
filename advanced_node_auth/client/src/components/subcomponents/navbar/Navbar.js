@@ -1,37 +1,44 @@
 import { useState } from 'react';
-import './Navbar.css'
-import Logo from '../../../images/icons/navbarlogo.png';
-import { useHistory } from "react-router-dom";
+import { 
+    useHistory,
+    Link
+ } from "react-router-dom";
 
+import NavbarElement from '../navbarelement/NavbarElement';
+import Logo from '../../../images/icons/LOGOCLEAN.png';
+import HomeIcon from '../../../images/icons/homeIcon.png';
+import './Navbar.css'
 
 const Navbar = (props) => {
     
-    // Later it will be taken from redux/context
-
-    const [isLoggedIn] = useState(props.isAuth || false);
+    const [isAuth] = useState(props.isAuth || false);
     const history = useHistory();
-
-    const handleLogin = () =>{
-        history.push("/login");
-    }
-
-    const handleRegister = () => {
-        history.push("/register");
-    }
 
     const handleLogout = () => {
         localStorage.removeItem("authToken");
-        history.push("/login");
+        history.push("/intro");
     }
     
     return(
-        <div id="container">
-                    <img id="logo" src={Logo} alt="website logo"/>
+        <div className="container">
+            <Link to="/login"><img id="logo" src={Logo} alt="website logo"/></Link>
 
-                    {!isLoggedIn && <button className="button" onClick={handleLogin}>Login</button>}
-                    {!isLoggedIn && <button className="button" onClick={handleRegister}>Register</button>}
-                    {isLoggedIn && <button className="button" onClick={handleLogout}>Logout</button>}
+            <div className="navbarElementsContainer">
+                {isAuth && <>
+                    <NavbarElement name="s" icon={HomeIcon}/>
+                    <NavbarElement name="i"/>
+                    <NavbarElement name="e"/>
+                    <NavbarElement name="m"/>
+                    <NavbarElement name="a"/>
+                    <button className="logbutton" onClick={handleLogout}>Logout</button>
+                </>}
 
+                {!isAuth && <>
+                    <NavbarElement style="logbutton" name="Login" href="/login"/>
+                    <NavbarElement style="logbutton" name="Register" href="/register"/>
+                </>}
+
+            </div>
         </div>
     );
 }
